@@ -139,7 +139,7 @@ Citizen.CreateThread(function()
         icon = "fa-regular fa-image"
     })
 
-    notification:setRespondContent("[Z] Salut!"):setRespondColor('red'):setFontColorContent('black')
+    notification:setRespondContent("[Z] Salut!"):setRespondColor('red'):setRespondColor('black')
     
     notification:apply('{"respond":{"content":"[Z] Salut!","font":"black"},"duration":3000,"colors":{"respond":"red"},"volume":0.2,"title":{"color":"indigo","font":"cyan","icon":"fa-regular fa-clock","badges":[{"color":"indigo","content":"AAAA","font":"red"},{"color":"lightgreen","content":"BBBBBBBB","font":"white"}],"content":"Salut"},"details":[{"font":"red","color":"indigo","content":"AAAA","icon":"fa-regular fa-image"},{"font":"white","color":"lightgreen","content":"BBBBBBBB","icon":"fa-regular fa-image"}],"sound":1,"eternal":false}')
 
@@ -155,34 +155,66 @@ end)
 local uuid = nil
 RegisterNetEvent('ww_JobsDispatch:test')
 AddEventHandler('ww_JobsDispatch:test', function()
-    return RequestForceNotification({
-        duration = 1000,
-        sound = 1,
-        volume = 0.2,
-        eternal = true,
+    local notif = Notification:new({
+        duration = 5000, -- 5s
+        sound = 1,       -- use './snd/1.mp3'
+        volume = 0.2,    -- 20%
+        eternal = false, -- Disapear by themselve afte 'duration' time
         title = {
-            content = "test",
-            icon = 'fa-solid fa-heart',
-            color = "green",
+            content = "Discharge of firearm",
+            icon = "fa-solid fa-gun",
+            color = "cyan", -- Icon color
+            -- font = "", -- to override default font color
             badges = {
                 {
-                    content = "salut",
-                }
-            }
+                    content = "#1",
+                    color   = "green",
+                    -- font = "white", -- to override default font color
+                },
+                {
+                    content = "10-11",
+                    color   = "cyan",
+                    -- font = "white", -- to override default font color
+                },
+            },
         },
         details = {
             {
-                content = "blah blah blah",
-                icon = 'fa-regular fa-clock',
+                content = "Time: hh:mm:ss",
+                icon    = "fa-solid fa-clock",
+                -- color = "cyan", -- to override default icon color
+                -- font  = "white", -- to override default font color
             },
             {
-                content = "blah blah blah",
-                icon = 'fa-solid fa-house',
+                content = "Del Perro Fwy, Downtown",
+                icon    = "fa-solid fa-map-location-dot",
+                -- color = "cyan", -- to override default icon color
+                -- font  = "white", -- to override default font color
+            },
+            {
+                content = "Gender: Male",
+                icon    = "fa-solid fa-user",
+                -- color = "cyan", -- to override default icon color
+                -- font  = "white", -- to override default font color
+            },
+            {
+                content = "Weapon: CLASS 1 - Heavy Pistol",
+                icon    = "fa-solid fa-gun",
+                -- color = "cyan", -- to override default icon color
+                -- font  = "white", -- to override default font color
             },
         },
+        respond = {
+            -- content = "", -- to override default button
+            -- color   = "cyan", -- to override default button color
+            -- font    = "white", -- to override default font color
+        },
         colors = {
-            primary = "indigo",
-            secondary = 0.8
-        }
+            primary   = "#25303B",
+            secondary = 0.85 -- Take primary color and make it 15% darker
+        },
     })
+
+
+    return RequestForceNotification(notif:validate())
 end)

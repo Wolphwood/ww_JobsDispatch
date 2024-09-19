@@ -141,8 +141,8 @@ _\*NB : Ceci est pour définir les couleurs par défaut, toutes autres couleurs 
             -- font  = "white", -- to override default font color
         },
         {
-            content = "Del Perro Fwy, Downtown",
-            icon    = "fa-solid fa-map-location-dot",
+            content = "Gender: Male",
+            icon    = "fa-solid fa-user",
             -- color = "cyan", -- to override default icon color
             -- font  = "white", -- to override default font color
         },

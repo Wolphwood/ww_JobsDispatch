@@ -49,7 +49,7 @@ function Notification:apply(template)
 
         if (isTable(template.title.badges)) then
             self.title.badges = {}
-            for k,v in ipairs(template.title.badges) do
+            for k,v in pairs(template.title.badges) do
                 table.insert(self.title.badges, {
                     content = String(v.content),
                     color   = String(v.color, nil),
@@ -61,7 +61,7 @@ function Notification:apply(template)
 
     if (isTable(template.details)) then
         self.details = {}
-        for k,v in ipairs(template.details) do
+        for k,v in pairs(template.details) do
             table.insert(self.details, {
                 content = String(v.content),
                 icon    = String(v.icon, nil),
@@ -81,7 +81,9 @@ function Notification:apply(template)
     
     if (isTable(template.colors)) then
         self.colors = {}
-        for k,v in ipairs(template.colors) do
+        
+        for k,v in pairs(template.colors) do
+            log(v)
             if (isNumber(v) or isString(v)) then
                 self.colors[k] = v
             end
@@ -301,11 +303,11 @@ function Notification:setBadgesColor(color)
     return self
 end
 
-function Notification:setRespondColor(color)
-    if isNil(self.colors) then self.colors = {} end
-    self.colors.respond = String(color, nil)
-    return self
-end
+-- function Notification:setRespondColor(color)
+--     if isNil(self.colors) then self.colors = {} end
+--     self.colors.respond = String(color, nil)
+--     return self
+-- end
 
 -- function Notification:setColor(name, color)
 --     if isNil(self.colors) then self.colors = {} end

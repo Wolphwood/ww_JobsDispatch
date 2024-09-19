@@ -132,6 +132,8 @@ window.addEventListener('message', event => {
     let { data } = event;
     let { type, content, uuid, request_id } = data;
 
+    console.log(JSON.stringify(data), null, 2)
+
     let nuid;
     switch (type.toUpperCase().replace(/[\s-_]/g, '')) {
         case 'PREPARE':
