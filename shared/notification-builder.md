@@ -5,47 +5,47 @@
     - [Notification:new(template)](#notificationnewtemplate)
 
 - Misc
-    - [Notification:apply(template)](#notificationapplytemplate)
-    - [Notification:validate()](#notificationvalidate)
-    - [Notification:json()](#notificationjson)
+    - [apply(template)](#notificationapplytemplate)
+    - [validate()](#notificationvalidate)
+    - [json()](#notificationjson)
 
 - Basics
-    - [Notification:setDuration(duration)](#notificationsetdurationduration)
-    - [Notification:setSound(sound)](#notificationsetsoundsound)
-    - [Notification:setVolume(volume)](#notificationsetvolumevolume)
-    - [Notification:setEternal(eternal)](#notificationseteternaleternal)
+    - [setDuration(duration)](#notificationsetdurationduration)
+    - [setSound(sound)](#notificationsetsoundsound)
+    - [setVolume(volume)](#notificationsetvolumevolume)
+    - [setEternal(eternal)](#notificationseteternaleternal)
 
 - Title
-    - [Notification:setTitle(content)](#notificationsettitlecontent)
-    - [Notification:setTitleIcon(icon)](#notificationsettitleiconicon)
-    - [Notification:setTitleFontColor(color)](#notificationsettitlefontcolorcolor)
-    - [Notification:setTitleBackgroundColor(color)](#notificationsettitlebackgroundcolorcolor)
+    - [setTitle(content)](#notificationsettitlecontent)
+    - [setTitleIcon(icon)](#notificationsettitleiconicon)
+    - [setTitleFontColor(color)](#notificationsettitlefontcolorcolor)
+    - [setTitleBackgroundColor(color)](#notificationsettitlebackgroundcolorcolor)
 
 - Title Badges
-    - [Notification:removeAllTitleBadges()](#notificationremovealltitlebadges)
-    - [Notification:setTitleBadges(badges)](#notificationsettitlebadgesbadges)
-    - [Notification:addTitleBadge(badge)](#notificationaddtitlebadgebadge)
-    - [Notification:editTitleBadge(index, badge)](#notificationedittitlebadgeindexbadge)
-    - [Notification:removeTitleBadge(index)](#notificationremovetitlebadgeindex)
+    - [removeAllTitleBadges()](#notificationremovealltitlebadges)
+    - [setTitleBadges(badges)](#notificationsettitlebadgesbadges)
+    - [addTitleBadge(badge)](#notificationaddtitlebadgebadge)
+    - [editTitleBadge(index, badge)](#notificationedittitlebadgeindexbadge)
+    - [removeTitleBadge(index)](#notificationremovetitlebadgeindex)
 
 - Content / Details
-    - [Notification:removeAllContentLines()](#notificationremoveallcontentlines)
-    - [Notification:setContentLines(details)](#notificationsetcontentlinesdetails)
-    - [Notification:addContentLine(detail)](#notificationaddcontentlinedetail)
-    - [Notification:editContentLine(index, detail)](#notificationeditcontentlineindexdetail)
-    - [Notification:removeContentLine(index)](#notificationremovecontentlineindex)
+    - [removeAllContentLines()](#notificationremoveallcontentlines)
+    - [setContentLines(details)](#notificationsetcontentlinesdetails)
+    - [addContentLine(detail)](#notificationaddcontentlinedetail)
+    - [editContentLine(index, detail)](#notificationeditcontentlineindexdetail)
+    - [removeContentLine(index)](#notificationremovecontentlineindex)
 
 - Respond Button
-    - [Notification:setRespondContent(content)](#notificationsetrespondcontentcontent)
-    - [Notification:setRespondFontColor(color)](#notificationsetrespondfontcolorcolor)
-    - [Notification:setRespondColor(color)](#notificationsetrespondcolorcolor)
+    - [setRespondContent(content)](#notificationsetrespondcontentcontent)
+    - [setRespondFontColor(color)](#notificationsetrespondfontcolorcolor)
+    - [setRespondColor(color)](#notificationsetrespondcolorcolor)
 
 - Colors
-    - [Notification:setPrimaryColor(color)](#notificationsetprimarycolorcolor)
-    - [Notification:setSecondaryColor(color)](#notificationsetsecondarycolorcolor)
-    - [Notification:setFontColor(color)](#notificationsetfontcolorcolor)
-    - [Notification:setBadgesColor(color)](#notificationsetbadgescolorcolor)
-    - [Notification:setRespondColor(color)](#notificationsetrespondcolorcolor)
+    - [setPrimaryColor(color)](#notificationsetprimarycolorcolor)
+    - [setSecondaryColor(color)](#notificationsetsecondarycolorcolor)
+    - [setFontColor(color)](#notificationsetfontcolorcolor)
+    - [setBadgesColor(color)](#notificationsetbadgescolorcolor)
+    - [setRespondColor(color)](#notificationsetrespondcolorcolor)
 
 
 ## Strucure Table
