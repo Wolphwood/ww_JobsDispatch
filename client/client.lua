@@ -48,10 +48,10 @@ function HideNotification(uuid)
     })
 end
 
-exports("Notify", RequestNewNotification);
-exports("Notify", RequestForceNotification);
-exports("Notify", ShowNotification);
-exports("Notify", HideNotification);
+exports("notify",       RequestNewNotification);
+exports("notifyForce",  RequestForceNotification);
+exports("notifyShow",   ShowNotification);
+exports("notifyHide",   HideNotification);
 
 
 

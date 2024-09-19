@@ -24,10 +24,10 @@ Voici la documentation en Markdown pour les fonctions que vous avez fournies :
 > 
 > #### Exemple
 > ```lua
-> local response = RequestNewNotification({
->     title = "Nouvelle Notification",
->     message = "Voici le message de la notification."
-> })
+> local notif = Notification:new(template)
+> notif:setTitle("Salut le monde!")
+> 
+> local uuid = RequestNewNotification(notif:validate())
 > ```
 
 ---
@@ -42,27 +42,27 @@ Voici la documentation en Markdown pour les fonctions que vous avez fournies :
 > | data     | Table | ❌       | `nil`   | Données à envoyer pour la notification. |
 >
 >#### Exemple
->```lua
->local response = RequestForceNotification({
->    title = "Notification de Force",
->    message = "Ce message est forcé à apparaître."
->})
->```
+> ```lua
+> local notif = Notification:new(template)
+> notif:setTitle("Salut le monde!")
+> 
+> local uuid = RequestForceNotification(notif:validate())
+> ```
 
 ---
 
->### `ShowNotification(uuid)`
->Affiche une notification existante en utilisant son UUID.
->
->#### Arguments
+> ### `ShowNotification(uuid)`
+> Affiche une notification existante en utilisant son UUID.
+> 
+> #### Arguments
 > | Argument | Type   | Optionel | Default | Description                    |
 > |----------|--------|----------|---------|--------------------------------|
 > | uuid     | String | ❌       | `nil`   | UUID de la notification à afficher. |
->
->#### Exemple
->```lua
->ShowNotification("F6R8FZ")
->```
+> 
+> #### Exemple
+> ```lua
+> ShowNotification("F6R8FZ")
+> ```
 
 ---
 

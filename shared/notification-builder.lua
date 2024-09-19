@@ -29,6 +29,7 @@ function Notification:new(template)
     local self = setmetatable({}, Notification)
     return self:apply(template)
 end
+exports("notifyCreate", Notification:new);
 
 function Notification:apply(template)
     if template == nil then template = {} end
