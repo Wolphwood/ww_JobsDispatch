@@ -1,5 +1,53 @@
 # Documentation de la classe `Notification`
 
+## Table des Matières
+### Creation
+#### [Notification:new(template)](#notificationnewtemplate)
+
+### Misc
+#### [Notification:apply(template)](#notificationapplytemplate)
+#### [Notification:validate()](#notificationvalidate)
+#### [Notification:json()](#notificationjson)
+
+### Basics
+#### [Notification:setDuration(duration)](#notificationsetdurationduration)
+#### [Notification:setSound(sound)](#notificationsetsoundsound)
+#### [Notification:setVolume(volume)](#notificationsetvolumevolume)
+#### [Notification:setEternal(eternal)](#notificationseteternaleternal)
+
+### Title
+#### [Notification:setTitle(content)](#notificationsettitlecontent)
+#### [Notification:setTitleIcon(icon)](#notificationsettitleiconicon)
+#### [Notification:setTitleFontColor(color)](#notificationsettitlefontcolorcolor)
+#### [Notification:setTitleBackgroundColor(color)](#notificationsettitlebackgroundcolorcolor)
+
+### Title Badges
+#### [Notification:removeAllTitleBadges()](#notificationremovealltitlebadges)
+#### [Notification:setTitleBadges(badges)](#notificationsettitlebadgesbadges)
+#### [Notification:addTitleBadge(badge)](#notificationaddtitlebadgebadge)
+#### [Notification:editTitleBadge(index, badge)](#notificationedittitlebadgeindexbadge)
+#### [Notification:removeTitleBadge(index)](#notificationremovetitlebadgeindex)
+
+### Content / Details
+#### [Notification:removeAllContentLines()](#notificationremoveallcontentlines)
+#### [Notification:setContentLines(details)](#notificationsetcontentlinesdetails)
+#### [Notification:addContentLine(detail)](#notificationaddcontentlinedetail)
+#### [Notification:editContentLine(index, detail)](#notificationeditcontentlineindexdetail)
+#### [Notification:removeContentLine(index)](#notificationremovecontentlineindex)
+
+### Respond Button
+#### [Notification:setRespondContent(content)](#notificationsetrespondcontentcontent)
+#### [Notification:setRespondFontColor(color)](#notificationsetrespondfontcolorcolor)
+#### [Notification:setRespondColor(color)](#notificationsetrespondcolorcolor)
+
+### Colors
+#### [Notification:setPrimaryColor(color)](#notificationsetprimarycolorcolor)
+#### [Notification:setSecondaryColor(color)](#notificationsetsecondarycolorcolor)
+#### [Notification:setFontColor(color)](#notificationsetfontcolorcolor)
+#### [Notification:setBadgesColor(color)](#notificationsetbadgescolorcolor)
+#### [Notification:setRespondColor(color)](#notificationsetrespondcolorcolor)
+
+
 ## Strucure Table
 |Nom|Type|Optionel|Default|Description|
 |-|-|-|-|-|
@@ -54,7 +102,7 @@
 
 _\*NB : Ceci est pour définir les couleurs par défaut, toutes autres couleurs définies ailleurs que dans `data.colors` écrasent celle-ci_
 
-## Full Exemple
+### Full Exemple
 ```lua
 {
     duration = 5000, -- 5s
@@ -116,6 +164,7 @@ _\*NB : Ceci est pour définir les couleurs par défaut, toutes autres couleurs 
     },
 }
 ```
+
 
 ## Methods
 

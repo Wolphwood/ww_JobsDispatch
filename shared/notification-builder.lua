@@ -264,12 +264,12 @@ function Notification:setRespondContent(content)
     self.respond.content = String(content, nil)
     return self
 end
-function Notification:setFontColorContent(color)
+function Notification:setRespondFontColor(color)
     if isNil(self.respond) then self.respond = {} end
     self.respond.font = String(color, nil)
     return self
 end
-function Notification:setColorContent(color)
+function Notification:setRespondColor(color)
     if isNil(self.respond) then self.respond = {} end
     self.respond.color = String(color, nil)
     return self
