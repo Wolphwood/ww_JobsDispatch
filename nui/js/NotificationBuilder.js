@@ -24,7 +24,7 @@ const CONFIG = {
         respond: {
             box: 'absolute bottom-0 right-0 p-2 m-2',
             text: 'px-8 py-2 rounded-full text-xl',
-            content: "[Y] Respond"
+            content: "[Y] Prendre"
         },
     }
 }
@@ -98,15 +98,14 @@ class NotificationHTML {
         }
 
         if (options.respond) {
-
             if (typeof options.respond == 'string' || typeof options.respond == 'number') {
                 this.data.respond = [{
                     content: options.respond
                 }];
             } else
             if (typeof options.respond == 'object' && !Array.isArray(options.respond)) {
-                let { content, font, color } = options.respond;
-                this.data.respond = { content, font, color };
+                let { content, font, color, disabled } = options.respond;
+                this.data.respond = { content, font, color, disabled };
             } else {
                 throw new Error(`Invalid value for 'data.respond'`);
             }
@@ -251,8 +250,7 @@ class NotificationHTML {
             });
         });
 
-        
-        div.appendChild( this.#buildRespond() );
+        if (!this.data.respond?.disabled) div.appendChild( this.#buildRespond() );
 
         return div;
     }
@@ -267,7 +265,7 @@ class NotificationHTML {
         p.innerText = this.data.respond?.content ?? CONFIG.notification.respond.content;
 
         if (this.data.respond?.font) p.style.setProperty('--notification-font-color', this.data.respond.font);
-        if (this.data.respond?.color) p.style.setProperty('--notification-respond-color', this.data.respond.font);
+        if (this.data.respond?.color) p.style.setProperty('--notification-respond-color', this.data.respond.color);
 
         this.elements.respond = {
             container: div, p

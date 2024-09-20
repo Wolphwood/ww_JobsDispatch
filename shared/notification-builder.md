@@ -39,6 +39,7 @@
     - [setRespondContent(content)](#notificationsetrespondcontentcontent)
     - [setRespondFontColor(color)](#notificationsetrespondfontcolorcolor)
     - [setRespondColor(color)](#notificationsetrespondcolorcolor)
+    - [disableRespondButton(bool)](#notificationdisablerespondbuttonbool)
 
 - Colors
     - [setPrimaryColor(color)](#notificationsetprimarycolorcolor)
@@ -87,9 +88,10 @@
 ### RespondTable
 |Nom|Type|Optionel|Default|Description|
 |-|-|-|-|-|
-| content | String | ✅ | `[Y] Respond` | Texte du bouton |
-| color   | String | ✅ | ❌           | Couleur du bouton |
-| font    | String | ✅ | ❌           | Couleur du texte |
+| disabled | Boolean | ✅ | `false`       | Define if button exist or not |
+| content  | String  | ✅ | `[Y] Respond` | Texte du bouton |
+| color    | String  | ✅ | ❌           | Couleur du bouton |
+| font     | String  | ✅ | ❌           | Couleur du texte |
 
 ### ColorTable
 |Nom|Type|Optionel|Default|Description|
@@ -553,6 +555,14 @@ Sets the color for the response section of the notification.
 > | Argument | Type | Optional | Default | Description |
 > |-|-|-|-|-|
 > | color | String | ✅ | `nil`   | The color value for the response. |
+
+### `Notification:disableRespondButton(bool)`
+Define if respond button is here or not.
+
+#### Arguments
+> | Argument | Type | Optional | Default | Description |
+> |-|-|-|-|-|
+> | bool | Boolean | ✅ | `false`   | It's make cookies. |
 
 #### Example
 ```lua

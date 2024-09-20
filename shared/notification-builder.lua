@@ -29,7 +29,6 @@ function Notification:new(template)
     local self = setmetatable({}, Notification)
     return self:apply(template)
 end
-exports("notifyCreate", Notification:new);
 
 function Notification:apply(template)
     if template == nil then template = {} end
@@ -74,9 +73,10 @@ function Notification:apply(template)
 
     if (isTable(template.respond)) then
         self.respond = {
-            content = String(template.respond.content),
-            color   = String(template.respond.color, nil),
-            font    = String(template.respond.font, nil)
+            disabled = Boolean(template.respond.disabled, false),
+            content  = String(template.respond.content),
+            color    = String(template.respond.color, nil),
+            font     = String(template.respond.font, nil)
         }
     end
     
@@ -95,10 +95,10 @@ function Notification:apply(template)
 end
 
 function Notification:validate()
-    if isNil(next(self.title)) then self.title = nil end
-    if isNil(next(self.details)) then self.details = nil end
-    if isNil(next(self.respond)) then self.respond = nil end
-    if isNil(next(self.colors)) then self.colors = nil end
+    if isNil(next(self.title or {})) then self.title = nil end
+    if isNil(next(self.details or {})) then self.details = nil end
+    if isNil(next(self.respond or {})) then self.respond = nil end
+    if isNil(next(self.colors or {})) then self.colors = nil end
     return self
 end
 
@@ -269,12 +269,18 @@ function Notification:setRespondContent(content)
 end
 function Notification:setRespondFontColor(color)
     if isNil(self.respond) then self.respond = {} end
+    if isBoolean(self.respond.disabled) then self.respond.disabled = false end
     self.respond.font = String(color, nil)
     return self
 end
 function Notification:setRespondColor(color)
     if isNil(self.respond) then self.respond = {} end
     self.respond.color = String(color, nil)
+    return self
+end
+function Notification:disableRespondButton(bool)
+    if isNil(self.respond) then self.respond = {} end
+    self.respond.disabled = Boolean(bool, false);
     return self
 end
 -- #endregion
