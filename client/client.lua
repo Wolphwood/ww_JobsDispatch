@@ -59,11 +59,32 @@ function HideNotification(uuid)
     })
 end
 
+function RemoveRespondButton(uuid)
+    SendNUIMessage({
+        type = 'REMOVE_RESPOND_BUTTON',
+        uuid = uuid
+    })
+end
+function RemoveAllRespondButton()
+    SendNUIMessage({
+        type = 'REMOVE_ALL_RESPOND_BUTTON',
+    })
+end
+function RemoveLastRespondButton()
+    SendNUIMessage({
+        type = 'REMOVE_LAST_RESPOND_BUTTON',
+    })
+end
+
 exports("notify",       SendNotification);
 exports("notifyNew",    RequestNewNotification);
 exports("notifyForce",  RequestForceNotification);
 exports("notifyShow",   ShowNotification);
 exports("notifyHide",   HideNotification);
+
+exports("notifyRemoveRespondButton",     RemoveRespondButton);
+exports("notifyRemoveAllRespondButton",  RemoveAllRespondButton);
+exports("notifyRemoveLastRespondButton", RemoveLastRespondButton);
 
 
 

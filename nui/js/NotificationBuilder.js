@@ -250,8 +250,14 @@ class NotificationHTML {
             });
         });
 
-        if (!this.data.respond?.disabled) div.appendChild( this.#buildRespond() );
-
+        if (this.data.respond) {
+            if (!this.data.respond.disabled) {
+                div.appendChild( this.#buildRespond() );
+            }
+        } else {
+            div.appendChild( this.#buildRespond() );
+        }
+        
         return div;
     }
 

@@ -100,6 +100,7 @@ function CreateNotification(uuid) {
     };
 }
 
+
 async function HideNotification(uuid) {
     if (!notifications[uuid]) return;
 
@@ -121,6 +122,7 @@ async function RemoveNotification(uuid) {
     delete notifications[uuid];
 }
 
+
 function RespondToNUI(id, data) {
     fetch(`https://ww_JobsDispatch/ww_JobsDispatch:nuiResponse_${id}`, {
         method: 'POST',
@@ -128,25 +130,58 @@ function RespondToNUI(id, data) {
     });
 }
 
-window.addEventListener('message', event => {
+function nuiMessageEvent(event) {
     let { data } = event;
     let { type, content, uuid, request_id } = data;
-
-    console.log(JSON.stringify(data), null, 2)
 
     let nuid;
     switch (type.toUpperCase().replace(/[\s-_]/g, '')) {
         case 'PREPARE':
             nuid = PrepareData(content);
-            RespondToNUI(request_id, nuid);
+            if (request_id) RespondToNUI(request_id, nuid);
         break;
 
         case 'ADDTOQUEUE':
         case 'QUEUE':
             nuid = AddToQueue(content);
-            RespondToNUI(request_id, nuid);
+            if (request_id) RespondToNUI(request_id, nuid);
         break;
         
+        case 'REMOVE_RESPOND_BUTTON':
+            if (!notifications[uuid]) return;
+            (() => {
+                let { notification } = notifications[uuid];
+
+                if (!notification.elements.respond) return;
+                
+                notification.elements.respond.container.remove();
+                delete notification.elements.respond;
+            })()
+        break;
+
+        case 'REMOVEALLRESPONDBUTTON':
+            Object.keys(notifications).forEach(key => {
+                let { notification } = notifications[key];
+
+                if (typeof notification.elements.respond === 'undefined') return;
+
+                notification.elements.respond.container.remove();
+                delete notification.elements.respond;
+            });
+        break;
+
+        case 'REMOVELASTRESPONDBUTTON':
+            (() => {
+                let last_uuid = Object.keys(notifications).pop();
+                let { notification } = notifications[last_uuid];
+
+                if (typeof notification.elements.respond === 'undefined') return;
+                
+                notification.elements.respond.container.remove();
+                delete notification.elements.respond;
+            })()
+        break;
+
         case 'SHOW':
             if (!notifications[uuid]) CreateNotification(uuid);
             ShowNotification(uuid);
@@ -164,10 +199,14 @@ window.addEventListener('message', event => {
             nuid = PrepareData(content);
             CreateNotification(nuid);
             ShowNotification(nuid);
-            RespondToNUI(request_id, nuid);
+            if (request_id) RespondToNUI(request_id, nuid);
         break;
 
         default:
             console.error(`[JobsDispatch] Unknown action '${type}'`);
     }
-});
+
+    delete notification;
+}
+
+window.addEventListener('message', nuiMessageEvent);
