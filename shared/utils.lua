@@ -1,21 +1,32 @@
-local ____t = 0
-function uuid()
+local _uuidRandomValue = 0
+function uuid(t)
     if (os ~= nil) then
-            math.randomseed(os.time() + ____t)
+        math.randomseed(tonumber(tostring(os.time()) .. tostring(math.abs(_uuidRandomValue))))
     else
-            math.randomseed(
-                GetClockDayOfWeek()..GetClockMonth()..GetClockDayOfMonth()..GetClockYear()..GetClockHours()..GetClockMinutes()..math.random(0, 0xFF)
-            )
+        math.randomseed(
+            GetClockDayOfWeek()..GetClockMonth()..GetClockDayOfMonth()..GetClockYear()..GetClockHours()..GetClockMinutes()..math.random(0, 0xFF)..tostring(math.abs(_uuidRandomValue))
+        )
     end
 
-    local template ='xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
-    local uuid, _ = string.gsub(template, '[xy]', function (c)
-            local v = (c == 'x') and math.random(0, 0xf) or math.random(8, 0xb)
+    local template = t or 'xxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+    local uuid, _ = string.gsub(template, '[xy0f]', function (c)
+        local v
+        if (c == 'x') then
+            v = math.random(0, 0xf)
+        elseif (c == 'y') then
+            v = math.random(8, 0xb)
+        elseif (c == '0') then
+            v = math.random(0, 9)
+        elseif (c == 'f') then
+            v = math.random(0xa, 0xf)
+        else
+            error("Caractère non pris en charge dans le template: " .. c)
+        end
 
-            return string.format('%x', v)
+        return string.format('%x', v)
     end)
 
-    ____t = math.random(0xFFFFFF)
+    _uuidRandomValue = _uuidRandomValue + math.random(0xFFFF)
     return uuid
 end
 
