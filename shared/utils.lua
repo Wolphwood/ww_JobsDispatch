@@ -1,11 +1,17 @@
 local _uuidRandomValue = 0
 function uuid(t)
     if (os ~= nil) then
-        math.randomseed(tonumber(tostring(os.time()) .. tostring(math.abs(_uuidRandomValue))))
+        local c = os.time()
+        local r = math.abs(_uuidRandomValue)
+
+        math.randomseed(tonumber(c..r) % 0x7FFFFFFF)
     else
-        math.randomseed(
-            GetClockDayOfWeek()..GetClockMonth()..GetClockDayOfMonth()..GetClockYear()..GetClockHours()..GetClockMinutes()..math.random(0, 0xFF)..tostring(math.abs(_uuidRandomValue))
-        )
+
+        local c = GetClockDayOfWeek()..GetClockMonth()..GetClockDayOfMonth()..GetClockYear()..GetClockHours()..GetClockMinutes()
+        local r = math.random(0xFF)
+        local z = math.abs(_uuidRandomValue)
+        
+        math.randomseed(tonumber(c..r..z) % 0x7FFFFFFF )
     end
 
     local template = t or 'xxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
@@ -26,9 +32,29 @@ function uuid(t)
         return string.format('%x', v)
     end)
 
-    _uuidRandomValue = _uuidRandomValue + math.random(0xFFFF)
+    _uuidRandomValue = _uuidRandomValue + 1
     return uuid
 end
+
+-- Citizen.CreateThread(function()
+--     local uuidTable = {}
+--     local uuidErrors = 0
+--     local uuidOKs = 0
+
+--     while true do
+--         Citizen.Wait(0)
+
+--         local newUUID = uuid()  -- Générer un nouvel UUID
+
+--         if uuidTable[newUUID] then
+--             uuidErrors = uuidErrors + 1
+--         else
+--             uuidOKs = uuidOKs + 1
+--             uuidTable[newUUID] = true  -- Ajouter le nouvel UUID à la table
+--         end
+--         print("Nombre d'UUID unique : " .. uuidOKs, "Nombre d'erreur : ".. uuidErrors)
+--     end
+-- end)
 
 function tprint (tbl, indent)
     if not indent then indent = 0 end

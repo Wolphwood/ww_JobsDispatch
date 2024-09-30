@@ -1079,11 +1079,11 @@ const NamedKeys = Object.keys(NAMES_HEX_colors);
 const UniqueKeys = Array.from(new Set([...TailwindKeys, ...CSSKeys, ...NamedKeys]));
 
 // ----------------------------------------------------------------------------------------------------
-console.log("--[ Colors.js ] --");
-console.log(`${TailwindKeys.length} Tailwind Colors.`);
-console.log(`${CSSKeys.length} CSS Colors.`);
-console.log(`${NamedKeys.length} Named Colors.`);
-console.log(`Support ${UniqueKeys.length} Uniques Colors.`);
+// console.log("--[ Colors.js ] --");
+// console.log(`${TailwindKeys.length} Tailwind Colors.`);
+// console.log(`${CSSKeys.length} CSS Colors.`);
+// console.log(`${NamedKeys.length} Named Colors.`);
+// console.log(`Support ${UniqueKeys.length} Uniques Colors.`);
 // ----------------------------------------------------------------------------------------------------
 
 function getTailwindHexColor(n) {

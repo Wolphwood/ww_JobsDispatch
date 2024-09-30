@@ -20,4 +20,3 @@ end)
 RegisterCommand('dispatch2', function()
     TriggerClientEvent('ww_JobsDispatch:test_b', -1)
 end)
-
